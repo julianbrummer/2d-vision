@@ -48,8 +48,8 @@ while(error > tolerance):
     error = np.linalg.norm(u - uold) / np.sqrt(height * width);
 
 #show images
-cv2.imshow('denoised image', u)
-cv2.imshow('texture', img - u)
+cv2.imshow('Denoised Image', u)
+cv2.imshow('Texture', img - u)
 #exit with esc
 cv2.waitKey(0) & 0xFF
 cv2.destroyAllWindows()
