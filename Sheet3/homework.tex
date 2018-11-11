@@ -1,0 +1,196 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{mathtools}% includes amsmath
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorNameShort}
+\chead{\hmwkClassShort\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Task Sections
+%
+
+\newcommand{\enterTaskHeader}[1]{
+  \nobreak\extramarks{}{Task \arabic{#1} continued on next page\ldots}\nobreak{}
+  \nobreak\extramarks{Task \arabic{#1} (continued)}{Task \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitTaskHeader}[1]{
+  \nobreak\extramarks{Task \arabic{#1} (continued)}{Task \arabic{#1} continued on next page\ldots}\nobreak{}
+  \stepcounter{#1}
+  \nobreak\extramarks{Task \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkTaskCounter}
+\setcounter{homeworkTaskCounter}{1}
+\nobreak\extramarks{Task \arabic{homeworkTaskCounter}}{}\nobreak{}
+
+%
+% Homework Task Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% Task counter. This is useful for when the Tasks given for your
+% assignment aren't sequential. See the last 3 Tasks of this template for an
+% example.
+%
+\newenvironment{homeworkTask}[1][-1]{
+  \ifnum#1>0
+    \setcounter{homeworkTaskCounter}{#1}
+  \fi
+  \section{Task \arabic{homeworkTaskCounter}}
+  \setcounter{partCounter}{1}
+  \enterTaskHeader{homeworkTaskCounter}
+}{
+  \exitTaskHeader{homeworkTaskCounter}
+}
+
+%
+% Homework Details
+%  - Title
+%  - Due date
+%  - Class
+%  - Section/Time
+%  - Instructor
+%  - Author
+%
+
+\newcommand{\hmwkTitle}{Ex. Sheet\ 3}
+\newcommand{\hmwkDueDate}{Monday, 12th November 2018}
+\newcommand{\hmwkDueTime}{10:00}
+\newcommand{\hmwkClass}{2D Vision and Deep Learning}
+\newcommand{\hmwkClassShort}{2DVDL}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Lukas Schulz, Michelle Borth, Julian Brummer}}
+\newcommand{\hmwkAuthorNameShort}{\textbf{Schulz, Borth, Brummer}}
+%
+% Title Page
+%
+
+\title{
+  \vspace{2in}
+  \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+  \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at \hmwkDueTime}\\
+  \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+  \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} #1}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} #2}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% R^i
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+
+% norm
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+% cross
+\newcommand{\cross}{\times}
+
+% unit vector
+\newcommand{\uvec}[1]{\hat{#1}}
+
+% wide unit vector
+\newcommand{\wuvec}[1]{\widehat{#1}}
+
+%quaternion
+\newcommand{\quat}[1]{\underline{#1}}
+
+%binomial coeff
+\newcommand{\binomial}[2]{\begin{pmatrix}#1 \\ #2 \end{pmatrix}}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkTask}[4]
+	Wir verwenden die OpenCV Funktionen antelle des ToolKits um die Kamera zu kalibrieren. Aus dem erste Schachbrett-Bild wird dann die Verzerrung herausgerechnet. Siehe calibratecam.py.
+\end{homeworkTask}
+\begin{homeworkTask}[7]
+  \begin{align*}
+  I^{F_2} \otimes (I^{F_1} \otimes I^E) &= \begin{bmatrix}-1 & 0 & 1\end{bmatrix} \otimes (\begin{bmatrix}-1 & 0 & 1\end{bmatrix} \otimes \begin{bmatrix}1 & 2 & 1\end{bmatrix}) = \begin{bmatrix}-1 & 0 & 1\end{bmatrix} \otimes \begin{bmatrix}2 & 0 & -2\end{bmatrix} = \begin{bmatrix}0 & 0 & 0\end{bmatrix} \\ &\neq \begin{bmatrix}2 & 4 & 2\end{bmatrix} = \begin{bmatrix}0 & 2 & 0\end{bmatrix} \otimes \begin{bmatrix}1 & 2 & 1\end{bmatrix} = (\begin{bmatrix}-1 & 0 & 1\end{bmatrix} \otimes \begin{bmatrix}-1 & 0 & 1\end{bmatrix}) \otimes  \begin{bmatrix}1 & 2 & 1\end{bmatrix} \\ &= (I^{F_2} \otimes I^{F_1}) \otimes I^E
+  \end{align*}
+\end{homeworkTask}
+\begin{homeworkTask}[8]
+  \begin{align*}
+  I^A = I^F \ast I^E = 
+  \begin{bmatrix}
+  0 & 1 & 0 \\
+  1 & 0 & 1 \\
+  0 & 0 & 0 
+  \end{bmatrix}  \ast
+  \begin{bmatrix}
+  0 & 1 & 1 & 1 \\
+  1 & 1 & 0 & 1 \\
+  0 & 0 & 1 & 1 \\
+  1 & 1 & 0 & 0 
+  \end{bmatrix} =   
+  \begin{bmatrix}
+  3 & 2 & 2 & 2 \\
+  2 & 1 & 3 & 2 \\
+  2 & 2 & 1 & 1 \\
+  1 & 2 & 2 & 2 
+  \end{bmatrix}
+  \end{align*}
+\end{homeworkTask}
+\end{document}
