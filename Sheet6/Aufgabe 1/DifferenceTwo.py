@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-#read video and define current frame
+#read video and current frame
 cap = cv2.VideoCapture('spongebob.mp4')
 ret, current_frame = cap.read()
 
